@@ -55,25 +55,118 @@
                                     </span>
                                     <span class="text">Detail</span>
                                 </a>
-                                <a href="/{{$buku->id}}/disetujui" class="btn btn-success btn-icon-split">
+                                <a href="#" class="btn btn-success btn-icon-split" data-toggle="modal" data-target="#setujuiModal{{$buku->id}}">
                                     <span class="icon text-white-50">
                                         <i class="fas fa-check"></i>
                                     </span>
                                     <span class="text">Setujui</span>
                                 </a>
-                                <a href="/{{$buku->id}}/ditolak" class="btn btn-danger btn-icon-split">
+                                <a href="#" class="btn btn-danger btn-icon-split" data-toggle="modal" data-target="#tolakModal{{$buku->id}}">
                                     <span class="icon text-white-50">
                                         <i class="fas fa-times"></i>
                                     </span>
                                     <span class="text">Tolak</span>
                                 </a>
-                                <a href="/{{$buku->id}}/hapus-pengajuan-admin" class="btn btn-secondary btn-icon-split">
+                                <a href="#" class="btn btn-secondary btn-icon-split" data-toggle="modal" data-target="#hapusModal{{$buku->id}}">
                                     <span class="icon text-white-50">
                                         <i class="fas fa-trash"></i>
                                     </span>
                                     <span class="text">Hapus</span>
                                 </a>
                             </td>
+                            <div class="modal fade" id="setujuiModal{{$buku->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Setujui Pengajuan Donasi</h5>
+                                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="/{{$buku->id}}/disetujui" method="POST" enctype="multipart/form-data">
+                                                @csrf
+                                                <p>Yakin ingin menyutujui pengajuan ?</p>
+                                                <br>
+                                                <button type="submit" class="btn btn-secondary btn-icon-split btn-lg">
+                                                    <span class="icon text-white-50">
+                                                        <i class="fas fa-arrow-left"></i>
+                                                    </span>
+                                                    <span class="text">Batal</span>
+                                                </button>
+                                                <button type="submit" class="btn btn-success btn-icon-split btn-lg">
+                                                    <span class="icon text-white-50">
+                                                        <i class="fas fa-check"></i>
+                                                    </span>
+                                                    <span class="text">Ya</span>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="tolakModal{{$buku->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Tolak Pengajuan Donasi</h5>
+                                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="/{{$buku->id}}/ditolak" method="POST" enctype="multipart/form-data">
+                                                @csrf
+                                                <p>Yakin ingin menolak pengajuan ?</p>
+                                                <br>
+                                                <button type="submit" class="btn btn-secondary btn-icon-split btn-lg">
+                                                    <span class="icon text-white-50">
+                                                        <i class="fas fa-arrow-left"></i>
+                                                    </span>
+                                                    <span class="text">Batal</span>
+                                                </button>
+                                                <button type="submit" class="btn btn-danger btn-icon-split btn-lg">
+                                                    <span class="icon text-white-50">
+                                                        <i class="fas fa-times"></i>
+                                                    </span>
+                                                    <span class="text">Ya</span>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade" id="hapusModal{{$buku->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Hapus Pengajuan Donasi</h5>
+                                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="/{{$buku->id}}/hapus-pengajuan-admin" method="POST" enctype="multipart/form-data">
+                                                @csrf
+                                                <p>Yakin ingin menghapus pengajuan ?</p>
+                                                <br>
+                                                <button type="submit" class="btn btn-secondary btn-icon-split btn-lg">
+                                                    <span class="icon text-white-50">
+                                                        <i class="fas fa-arrow-left"></i>
+                                                    </span>
+                                                    <span class="text">Batal</span>
+                                                </button>
+                                                <button type="submit" class="btn btn-secondary btn-icon-split btn-lg">
+                                                    <span class="icon text-white-50">
+                                                        <i class="fas fa-trash"></i>
+                                                    </span>
+                                                    <span class="text">Ya</span>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </tr>
                         @endforeach
                     </tbody>

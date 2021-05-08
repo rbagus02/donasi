@@ -55,13 +55,44 @@
                                     </span>
                                     <span class="text">Detail</span>
                                 </a>
-                                <a href="/{{$buku->id}}/hapus-pengajuan-ditolak-admin" class="btn btn-secondary btn-icon-split">
+                                <a href="#" class="btn btn-secondary btn-icon-split" data-toggle="modal" data-target="#hapusModal{{$buku->id}}">
                                     <span class="icon text-white-50">
                                         <i class="fas fa-trash"></i>
                                     </span>
                                     <span class="text">Hapus</span>
                                 </a>
                             </td>
+                            <div class="modal fade" id="hapusModal{{$buku->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Hapus Pengajuan Donasi</h5>
+                                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="/{{$buku->id}}/hapus-pengajuan-ditolak-admin" method="POST" enctype="multipart/form-data">
+                                                @csrf
+                                                <p>Yakin ingin menghapus pengajuan ?</p>
+                                                <br>
+                                                <button type="submit" class="btn btn-secondary btn-icon-split btn-lg">
+                                                    <span class="icon text-white-50">
+                                                        <i class="fas fa-arrow-left"></i>
+                                                    </span>
+                                                    <span class="text">Batal</span>
+                                                </button>
+                                                <button type="submit" class="btn btn-secondary btn-icon-split btn-lg">
+                                                    <span class="icon text-white-50">
+                                                        <i class="fas fa-trash"></i>
+                                                    </span>
+                                                    <span class="text">Ya</span>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </tr>
                         @endforeach
                     </tbody>

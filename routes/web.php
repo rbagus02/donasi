@@ -44,13 +44,13 @@ Route::group(['middleware' => ['auth','checkRole:1']],function(){
     Route::get('/halaman-admin', 'App\Http\Controllers\BukuAdminController@riwayat_admin');
 
     Route::get('/pengajuan-admin', 'App\Http\Controllers\BukuAdminController@pengajuan_admin');
-    Route::get('/{id}/hapus-pengajuan-admin', 'App\Http\Controllers\BukuAdminController@hapus_pengajuan_admin');
+    Route::post('/{id}/hapus-pengajuan-admin', 'App\Http\Controllers\BukuAdminController@hapus_pengajuan_admin');
     Route::get('/{id}/detail-pengajuan-admin', 'App\Http\Controllers\BukuAdminController@det_pengajuan_admin');
-    Route::get('/{id}/disetujui', 'App\Http\Controllers\BukuAdminController@disetujui');
-    Route::get('/{id}/ditolak', 'App\Http\Controllers\BukuAdminController@ditolak');
+    Route::post('/{id}/disetujui', 'App\Http\Controllers\BukuAdminController@disetujui');
+    Route::post('/{id}/ditolak', 'App\Http\Controllers\BukuAdminController@ditolak');
 
     Route::get('/pengajuan-ditolak-admin', 'App\Http\Controllers\BukuAdminController@penolakan_admin');
-    Route::get('/{id}/hapus-pengajuan-ditolak-admin', 'App\Http\Controllers\BukuAdminController@hapus_pengajuan_ditolak_admin');
+    Route::post('/{id}/hapus-pengajuan-ditolak-admin', 'App\Http\Controllers\BukuAdminController@hapus_pengajuan_ditolak_admin');
 
     Route::get('/penyerahan-admin', 'App\Http\Controllers\BukuAdminController@penyerahan_admin');
     Route::get('/{id}/diterima', 'App\Http\Controllers\BukuAdminController@diterima');
