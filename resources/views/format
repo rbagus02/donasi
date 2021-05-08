@@ -1,0 +1,11 @@
+@extends('admin.template.master')
+
+@section('content')
+
+
+
+@endsection
+
+{{asset('admin/ ')}}
+
+@include('admin.template.sidebar')
