@@ -17,9 +17,9 @@
                                 Data yang diinputkan tidak sesuai.
                             </div>
                         @endif
-                        @if (session('berhasil'))
+                        @if (session('terima'))
                             <div class="alert alert-success" role="alert">
-                                {{session('berhasil')}}
+                                {{session('terima')}}
                             </div>
                         @endif
                         <tr>
@@ -53,13 +53,52 @@
                                     </span>
                                     <span class="text">Detail</span>
                                 </a>
-                                <a href="/{{$buku->id}}/salurkan" class="btn btn-success btn-icon-split">
+                                <a href="#" class="btn btn-success btn-icon-split" data-toggle="modal" data-target="#terimaModal{{$buku->id}}">
                                     <span class="icon text-white-50">
                                         <i class="fas fa-share-square"></i>
                                     </span>
                                     <span class="text">Salurkan</span>
                                 </a>
                             </td>
+                            @if(isset($buku->id))
+                                <div class="modal fade" id="terimaModal{{$buku->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Salurkan pengajuan donasi buku</h5>
+                                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="/{{$buku->id}}/simpan-salurkan" method="POST">
+                                                    @csrf
+                                                    <p>Masukkan penerima donasi buku</p>
+                                                    <div class="input-group">
+                                                        <input type="text" name="penerima" class="form-control" placeholder="Masukkan Penerima" aria-describedby="basic-addon2">
+                                                    </div>
+                                                    <div class="input-group">
+                                                        <input type="hidden" name="status" class="form-control" value="" aria-describedby="basic-addon2">
+                                                    </div>
+                                                    <br>
+                                                    <button type="button" class="btn btn-secondary btn-icon-split btn-lg" data-dismiss="modal" aria-label="Close">
+                                                        <span class="icon text-white-50">
+                                                            <i class="fas fa-angle-left"></i>
+                                                        </span>
+                                                        <span class="text">Batal</span>
+                                                    </button>
+                                                    <button type="submit" class="btn btn-success btn-icon-split btn-lg">
+                                                        <span class="icon text-white-50">
+                                                            <i class="fas fa-check"></i>
+                                                        </span>
+                                                        <span class="text">Ya</span>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
                         </tr>
                         @endforeach
                     </tbody>

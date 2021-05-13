@@ -53,10 +53,9 @@ Route::group(['middleware' => ['auth','checkRole:1']],function(){
     Route::post('/{id}/hapus-pengajuan-ditolak-admin', 'App\Http\Controllers\BukuAdminController@hapus_pengajuan_ditolak_admin');
 
     Route::get('/penyerahan-admin', 'App\Http\Controllers\BukuAdminController@penyerahan_admin');
-    Route::get('/{id}/diterima', 'App\Http\Controllers\BukuAdminController@diterima');
+    Route::post('/{id}/diterima', 'App\Http\Controllers\BukuAdminController@diterima');
 
     Route::get('/belum-disalurkan-admin', 'App\Http\Controllers\BukuAdminController@belum_admin');
-    Route::get('/{id}/salurkan', 'App\Http\Controllers\BukuAdminController@salurkan');
     Route::post('/{id}/simpan-salurkan', 'App\Http\Controllers\BukuAdminController@simpan_salurkan');
 
     Route::get('/sudah-disalurkan-admin', 'App\Http\Controllers\BukuAdminController@sudah_admin');

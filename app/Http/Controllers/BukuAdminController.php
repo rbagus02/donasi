@@ -20,20 +20,6 @@ class BukuAdminController extends Controller
         return view('admin.pengajuan',['buku' => $buku]);
     }
 
-    public function hapus_pengajuan_admin($id)
-    {
-        $buku = Buku::find($id);
-        $buku->delete();
-        return redirect('/pengajuan-admin')->with('berhasil','Pengajuan berhasil dihapus.');
-    }
-
-    public function hapus_pengajuan_ditolak_admin($id)
-    {
-        $buku = Buku::find($id);
-        $buku->delete();
-        return redirect('/pengajuan-ditolak-admin')->with('berhasil','Pengajuan berhasil dihapus.');
-    }
-
     public function det_pengajuan_admin($id)
     {
         $buku = Buku::find($id);
@@ -46,7 +32,7 @@ class BukuAdminController extends Controller
         Buku::where('id', $id)->update([
             'status' => 3,
         ]);
-        return redirect('/penyerahan-admin')->with('berhasil','Pengajuan berhasil disetujui');
+        return redirect('/penyerahan-admin')->with('setuju','Pengajuan berhasil disetujui');
     }
 
     public function ditolak(Request $request,$id)
@@ -55,13 +41,27 @@ class BukuAdminController extends Controller
         Buku::where('id', $id)->update([
             'status' => 2,
         ]);
-        return redirect('/pengajuan-ditolak-admin')->with('berhasil','Pengajuan berhasil ditolak');
+        return redirect('/pengajuan-ditolak-admin')->with('tolak','Pengajuan berhasil ditolak');
+    }
+
+    public function hapus_pengajuan_admin($id)
+    {
+        $buku = Buku::find($id);
+        $buku->delete();
+        return redirect('/pengajuan-admin')->with('hapus','Pengajuan berhasil dihapus.');
     }
 
     public function penolakan_admin()
     {
         $buku = Buku::where('status', 2)->get();
         return view('admin.pengajuan-ditolak',['buku' => $buku]);
+    }
+
+    public function hapus_pengajuan_ditolak_admin($id)
+    {
+        $buku = Buku::find($id);
+        $buku->delete();
+        return redirect('/pengajuan-ditolak-admin')->with('hapus','Pengajuan berhasil dihapus.');
     }
 
     public function penyerahan_admin()
@@ -76,7 +76,7 @@ class BukuAdminController extends Controller
         Buku::where('id', $id)->update([
             'status' => 4,
         ]);
-        return redirect('/belum-disalurkan-admin')->with('berhasil','Pengajuan berhasil diterima');
+        return redirect('/belum-disalurkan-admin')->with('terima','Pengajuan berhasil diterima');
     }
 
     public function belum_admin()

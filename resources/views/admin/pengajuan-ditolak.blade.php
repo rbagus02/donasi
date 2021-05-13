@@ -17,11 +17,16 @@
                                 Data yang diinputkan tidak sesuai.
                             </div>
                         @endif
-                        @if (session('berhasil'))
-                            <div class="alert alert-success" role="alert">
-                                {{session('berhasil')}}
+                        @if (session('tolak'))
+                            <div class="alert alert-danger" role="alert">
+                                {{session('tolak')}}
                             </div>
-                        @endif        
+                        @endif
+                        @if(session('hapus'))
+                            <div class="alert alert-secondary" role="alert">
+                                {{session('hapus')}}
+                            </div>
+                        @endif     
                         <tr>
                             <th>No</th>
                             <th>Donatur</th>

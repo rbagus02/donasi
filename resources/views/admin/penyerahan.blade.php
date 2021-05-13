@@ -17,9 +17,9 @@
                                 Data yang diinputkan tidak sesuai.
                             </div>
                         @endif
-                        @if (session('berhasil'))
+                        @if (session('setuju'))
                             <div class="alert alert-success" role="alert">
-                                {{session('berhasil')}}
+                                {{session('setuju')}}
                             </div>
                         @endif       
                         <tr>
@@ -53,51 +53,51 @@
                                     </span>
                                     <span class="text">Detail</span>
                                 </a>
-                                <a href="/{{$buku->id}}/diterima" class="btn btn-success btn-icon-split">
+                                <a href="#" class="btn btn-success btn-icon-split" data-toggle="modal" data-target="#terimaModal{{$buku->id}}">
                                     <span class="icon text-white-50">
                                         <i class="fas fa-check"></i>
                                     </span>
                                     <span class="text">Diterima</span>
                                 </a>
                             </td>
-                        </tr>
-                        @if(isset($buku->id))
-                            <div class="modal fade" id="diterimaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Terima Pengajuan</h5>
-                                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">×</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form action="/{{$buku->id}}/diterima" method="POST">
-                                                @csrf
-                                                <br>
-                                                <p>Yakinkah buku sudah diterima ?</p>
-                                                <div class="input-group">
-                                                    <input type="hidden" name="status" class="form-control" value="" aria-describedby="basic-addon2">
-                                                </div>
-                                                <br>
-                                                <button type="button" class="btn btn-secondary btn-icon-split btn-lg" data-dismiss="modal" aria-label="Close">
-                                                    <span class="icon text-white-50">
-                                                        <i class="fas fa-angle-left"></i>
-                                                    </span>
-                                                    <span class="text">Batal</span>
+                            @if(isset($buku->id))
+                                <div class="modal fade" id="terimaModal{{$buku->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Terima Pengajuan</h5>
+                                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">×</span>
                                                 </button>
-                                                <button type="submit" class="btn btn-success btn-icon-split btn-lg">
-                                                    <span class="icon text-white-50">
-                                                        <i class="fas fa-check"></i>
-                                                    </span>
-                                                    <span class="text">Diterima</span>
-                                                </button>
-                                            </form>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="/{{$buku->id}}/diterima" method="POST">
+                                                    @csrf
+                                                    <br>
+                                                    <p>Yakinkah buku sudah diterima ?</p>
+                                                    <div class="input-group">
+                                                        <input type="hidden" name="status" class="form-control" value="" aria-describedby="basic-addon2">
+                                                    </div>
+                                                    <br>
+                                                    <button type="button" class="btn btn-secondary btn-icon-split btn-lg" data-dismiss="modal" aria-label="Close">
+                                                        <span class="icon text-white-50">
+                                                            <i class="fas fa-angle-left"></i>
+                                                        </span>
+                                                        <span class="text">Batal</span>
+                                                    </button>
+                                                    <button type="submit" class="btn btn-success btn-icon-split btn-lg">
+                                                        <span class="icon text-white-50">
+                                                            <i class="fas fa-check"></i>
+                                                        </span>
+                                                        <span class="text">Ya</span>
+                                                    </button>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        @endif
+                            @endif
+                        </tr>
                         @endforeach
                     </tbody>
                 </table>
