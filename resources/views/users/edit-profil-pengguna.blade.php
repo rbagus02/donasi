@@ -34,7 +34,7 @@
                     <input type="text" name="alamat" class="form-control" value="{{$user->alamat}}" placeholder="Masukkan Alamat" aria-describedby="basic-addon2">
                 </div>
                 <br>
-                <button type="submit" class="btn btn-success btn-icon-split btn-lg">
+                <button type="submit" class="btn btn-warning btn-icon-split btn-lg">
                     <span class="icon text-white-50">
                         <i class="fas fa-check"></i>
                     </span>

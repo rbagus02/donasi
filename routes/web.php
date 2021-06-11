@@ -62,18 +62,18 @@ Route::group(['middleware' => ['auth','checkRole:1']],function(){
 
     Route::get('/daftar-berita','App\Http\Controllers\BeritaController@berita');
     Route::post('/tambah-berita', 'App\Http\Controllers\beritaController@tambahberita');
-    Route::get('/{id}/hapus-berita', 'App\Http\Controllers\BeritaController@hapus');
+    Route::post('/{id}/hapus-berita', 'App\Http\Controllers\BeritaController@hapus');
     Route::get('/{id}/edit-berita', 'App\Http\Controllers\BeritaController@edit');
     Route::get('/{id}/detail-berita', 'App\Http\Controllers\BeritaController@detail');
     Route::post('/{id}/simpan-edit-berita', 'App\Http\Controllers\BeritaController@simpanedit');
 
     Route::get('/daftar-pengguna','App\Http\Controllers\UserAdminController@daftarpengguna');
-    Route::get('/{id}/hapus-pengguna', 'App\Http\Controllers\UserAdminController@hapuspengguna');
+    Route::post('/{id}/hapus-pengguna', 'App\Http\Controllers\UserAdminController@hapuspengguna');
     Route::get('/{id}/detail-pengguna', 'App\Http\Controllers\UserAdminController@detailpengguna');
 
     Route::get('/daftar-admin','App\Http\Controllers\UserAdminController@daftaradmin');
     Route::post('/tambah-admin', 'App\Http\Controllers\UserAdminController@tambahadmin');
-    Route::get('/{id}/hapus-admin', 'App\Http\Controllers\UserAdminController@hapusadmin');
+    Route::post('/{id}/hapus-admin', 'App\Http\Controllers\UserAdminController@hapusadmin');
     Route::get('/{id}/edit-profil-admin', 'App\Http\Controllers\UserAdminController@editadmin');
     Route::get('/{id}/detail-profil-admin', 'App\Http\Controllers\UserAdminController@detailadmin');
     Route::post('/{id}/simpan-profil-admin', 'App\Http\Controllers\UserAdminController@simpaneditadmin');
@@ -97,7 +97,7 @@ Route::group(['middleware' => ['auth','checkRole:2']],function(){
 
     Route::get('/pengajuan-users', 'App\Http\Controllers\BukuController@pengajuan_users');
     Route::post('/tambah-pengajuan', 'App\Http\Controllers\BukuController@tambah_pengajuan');
-    Route::get('/{id}/hapus-pengajuan-users', 'App\Http\Controllers\BukuController@hapus_pengajuan_users');
+    Route::post('/{id}/hapus-pengajuan-users', 'App\Http\Controllers\BukuController@hapus_pengajuan_users');
     Route::get('/{id}/edit-pengajuan-users', 'App\Http\Controllers\BukuController@edit_pengajuan_users');
     Route::get('/{id}/detail-pengajuan-users', 'App\Http\Controllers\BukuController@detail_pengajuan_users');
     Route::post('/{id}/simpan-edit-pengajuan-users', 'App\Http\Controllers\BukuController@simpan_edit_pengajuan_users');

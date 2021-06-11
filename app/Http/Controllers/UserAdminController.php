@@ -57,7 +57,7 @@ class UserAdminController extends Controller
     {
         $admins = User::find($id);
         $admins->delete();
-        return redirect('/daftar-admin')->with('berhasil','Admin berhasil dihapus.');
+        return redirect('/daftar-admin')->with('hapus','Admin berhasil dihapus.');
     }
 
     public function editadmin($id)
@@ -89,6 +89,6 @@ class UserAdminController extends Controller
             'nomor_telp' => $request->nomor_telp,
             'alamat' => $request->alamat,
         ]);
-        return redirect('/daftar-admin')->with('berhasil','Admin berhasil diedit.');
+        return redirect('/halaman-admin')->with('berhasil','Admin berhasil diedit.');
     }
 }

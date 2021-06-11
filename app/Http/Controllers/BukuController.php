@@ -62,14 +62,14 @@ class BukuController extends Controller
     {
         $buku = Buku::find($id);
         $buku->delete();
-        return redirect('/pengajuan-users')->with('berhasil','Pengajuan berhasil dihapus.');
+        return redirect('/pengajuan-users')->with('hapus','Pengajuan berhasil dihapus.');
     }
 
     public function hapus_pengajuan_ditolak_users($id)
     {
         $buku = Buku::find($id);
         $buku->delete();
-        return redirect('/pengajuan-users-ditolak')->with('berhasil','Pengajuan berhasil dihapus.');
+        return redirect('/pengajuan-users-ditolak')->with('hapus','Pengajuan berhasil dihapus.');
     }
 
     public function edit_pengajuan_users($id)

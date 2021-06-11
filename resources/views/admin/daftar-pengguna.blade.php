@@ -11,9 +11,9 @@
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
-                        @if (session('berhasil'))
-                            <div class="alert alert-success" role="alert">
-                                {{session('berhasil')}}
+                        @if (session('hapus'))
+                            <div class="alert alert-secondary" role="alert">
+                                {{session('hapus')}}
                             </div>
                         @endif
                         <tr>
@@ -38,13 +38,44 @@
                                     </span>
                                     <span class="text">Detail</span>
                                 </a>
-                                <a href="/{{$user->id}}/hapus-pengguna" class="btn btn-secondary btn-icon-split">
+                                <a href="/{{$user->id}}/hapus-pengguna" class="btn btn-secondary btn-icon-split" data-toggle="modal" data-target="#hapusModal{{$user->id}}">
                                     <span class="icon text-white-50">
                                         <i class="fas fa-trash"></i>
                                     </span>
                                     <span class="text">Hapus</span>
                                 </a>
                             </td>
+                            <div class="modal fade" id="hapusModal{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Hapus Pengguna</h5>
+                                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form action="/{{$user->id}}/hapus-pengguna" method="POST" enctype="multipart/form-data">
+                                                @csrf
+                                                <p>Yakin ingin menghapus pengguna ?</p>
+                                                <br>
+                                                <button type="submit" class="btn btn-secondary btn-icon-split btn-lg">
+                                                    <span class="icon text-white-50">
+                                                        <i class="fas fa-arrow-left"></i>
+                                                    </span>
+                                                    <span class="text">Batal</span>
+                                                </button>
+                                                <button type="submit" class="btn btn-secondary btn-icon-split btn-lg">
+                                                    <span class="icon text-white-50">
+                                                        <i class="fas fa-trash"></i>
+                                                    </span>
+                                                    <span class="text">Ya</span>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </tr>
                         @endforeach
                     </tbody>

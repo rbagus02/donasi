@@ -12,6 +12,11 @@
             <div class="table-responsive">
                 <table class="table table-bordered" id="tabel-data  " width="100%" cellspacing="0">
                     <thead>
+                        @if (session('berhasil'))
+                            <div class="alert alert-warning" role="alert">
+                                {{session('berhasil')}}
+                            </div>
+                        @endif
                         <tr>
                             <th>No</th>
                             <th>Donatur</th>

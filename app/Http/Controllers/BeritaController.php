@@ -42,7 +42,7 @@ class BeritaController extends Controller
     {
         $berita = Berita::find($id);
         $berita->delete();
-        return redirect('/daftar-berita')->with('berhasil','Berita berhasil dihapus.');
+        return redirect('/daftar-berita')->with('hapus','Berita berhasil dihapus.');
     }
 
     public function edit($id)

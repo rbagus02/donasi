@@ -7,7 +7,7 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Profil Pengguna</h6><br>
-            <a href="/{{auth()->user()->id}}/edit-profil-admin" class="btn btn-primary btn-icon-split">
+            <a href="/{{auth()->user()->id}}/edit-profil-admin" class="btn btn-warning btn-icon-split">
                 <span class="icon text-white-50">
                     <i class="fas fa-user-cog"></i>
                 </span>
@@ -25,7 +25,7 @@
                             </div>
                         @endif
                         @if (session('berhasil'))
-                            <div class="alert alert-success" role="alert">
+                            <div class="alert alert-warning" role="alert">
                                 {{session('berhasil')}}
                             </div>
                         @endif
